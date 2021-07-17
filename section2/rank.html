@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>출력결과</title>
+	</head>
+	<body>
+		<script>
+			function solution(arr) {
+				const rank_board = {};
+				[...arr]
+					.sort((a, b) => b - a)
+					.forEach((score, idx) => {
+						if (!rank_board[score]) {
+							rank_board[score] = idx + 1;
+						}
+					});
+
+				const answer = arr.map((score) => rank_board[score]);
+				return answer;
+			}
+
+			let arr = [87, 89, 92, 100, 76];
+			let arr1 = [87, 89, 92, 92, 92, 100, 76];
+			let arr2 = [87, 89, 92, 100, 100, 76, 76, 89];
+			console.log(solution(arr));
+			console.log(solution(arr1));
+			console.log(solution(arr2));
+		</script>
+	</body>
+</html>

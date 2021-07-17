@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>출력결과</title>
+	</head>
+	<body>
+		<script>
+			function solution(arr) {
+				const answer = arr.reduce(
+					(obj, score) => {
+						score === 1
+							? (obj.total += ++obj.continuous)
+							: (obj.continuous = 0);
+						return obj;
+					},
+					{
+						continuous: 0,
+						total: 0,
+					}
+				).total;
+				return answer;
+			}
+
+			let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+			console.log(solution(arr));
+		</script>
+	</body>
+</html>
