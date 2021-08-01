@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>출력결과</title>
+	</head>
+	<body>
+		<script>
+			function solution(s, t) {
+				let tPos = -101;
+				const lengthArray = [...s].reduce((arr, now, index) => {
+					if (now === t) {
+						tPos = index;
+					}
+					arr.push(index - tPos);
+					return arr;
+				}, []);
+
+				tPos = 101;
+
+				const answer = [...s]
+					.reverse()
+					.reduce((arr, now, index) => {
+						if (now === t) {
+							tPos = index;
+						}
+
+						if (arr[index] > index - tPos) {
+							arr[index] = index - tPos;
+						}
+
+						return arr;
+					}, lengthArray.reverse())
+					.reverse();
+
+				return answer;
+			}
+
+			let str = 'teachermode';
+			console.log(solution(str, 'e'));
+		</script>
+	</body>
+</html>
